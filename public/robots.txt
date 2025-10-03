@@ -1,0 +1,11 @@
+# Robots.txt for SEO
+# Tells search engines where to find your sitemap
+
+User-agent: *
+Allow: /
+
+# Sitemap location (update with your domain)
+Sitemap: https://yourdomain.com/blog/sitemap.xml
+
+# Optional: Slow down crawl rate if needed
+Crawl-delay: 1
