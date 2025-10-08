@@ -1,13 +1,13 @@
 .article {
   -webkit-text-size-adjust: 100%;
-  line-height: 1.7;
+  line-height: 1.5;
   -moz-tab-size: 4;
   -o-tab-size: 4;
   tab-size: 4;
-  font-size: 16px !important;
+  font-size: 18px !important;
   max-width: 900px;
   margin-bottom: 96px;
-  color: hsl(0, 0%, 70.6%);
+  color: #1e293b;
   padding: 48px 1rem;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .article a {
-  color: #f97316;
+  color: #2e4b68;
   text-decoration: none;
 }
 
@@ -82,7 +82,7 @@
 }
 
 .article h1 {
-  color: hsl(0, 0%, 88%);
+  color: #111827;
   font-size: 2rem;
   font-weight: 800;
   margin-top: 1rem;
@@ -90,7 +90,7 @@
 }
 
 .article h2 {
-  color: hsl(0, 0%, 88%);
+  color: #111827;
   font-size: 1.5rem;
   font-weight: 700;
   margin-top: 1.8rem;
@@ -98,7 +98,7 @@
 }
 
 .article h3 {
-  color: hsl(0, 0%, 88%);
+  color: #111827;
   font-size: 1.2rem;
   font-weight: 600;
   margin-top: 1.5rem;
@@ -106,7 +106,7 @@
 }
 
 .article h4 {
-  color: hsl(0, 0%, 88%);
+  color: #111827;
   font-size: 1rem;
   font-weight: 600;
   margin-top: 1.5rem;
@@ -120,6 +120,7 @@
 .article img {
   max-width: 100%;
   margin: 1em auto;
+  border-radius: 10px;
 }
 
 .article {
@@ -143,9 +144,11 @@
   font-weight: 500;
 }
 
+/* divider line */
 .article hr {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+  color: #939393;
 }
 
 .article pre {

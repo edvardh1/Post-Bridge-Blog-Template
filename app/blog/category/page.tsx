@@ -4,7 +4,7 @@ import { LightweightClient } from 'lightweight-client';
 
 async function getCategories() {
   const key = process.env.NEXT_PUBLIC_LIGHTWEIGHT_API_KEY;
-  if (!key) throw Error('LIGHTWEIGHT_API_KEY environment variable must be set. You can use the DEMO key a8c58738-7b98-4597-b20a-0bb1c2fe5772 for testing - please set it in the root .env.local file');
+  if (!key) throw Error('LIGHTWEIGHT_API_KEY environment variable must be set. ');
 
   const client = new LightweightClient(key);
   return client.getCategories();

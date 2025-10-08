@@ -9,7 +9,7 @@ import '../blog.css';
 
 async function getPost(slug: string) {
   const key = process.env.LIGHTWEIGHT_API_KEY || process.env.NEXT_PUBLIC_LIGHTWEIGHT_API_KEY;
-  if (!key) throw Error('LIGHTWEIGHT_API_KEY environment variable must be set. You can use the DEMO key a8c58738-7b98-4597-b20a-0bb1c2fe5772 for testing - please set it in the root .env.local file');
+  if (!key) throw Error('LIGHTWEIGHT_API_KEY environment variable must be set. ');
 
   const client = new LightweightClient(key);
   return client.getPost(slug);
@@ -54,10 +54,10 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
   const post = await getPost(slug);
   
   if (!post) return (
-    <main className="bg-landing-background min-h-screen">
+    <main className=" min-h-screen">
       <div className="max-w-screen-xl mx-auto px-4 flex items-center justify-start h-screen md:px-8">
         <div className="max-w-lg mx-auto space-y-3 text-center">
-          <h3 className="text-brand font-semibold">404 Error</h3>
+          <h3 className="font-semibold">404 Error</h3>
           <p className="text-gray-100 text-4xl font-semibold sm:text-5xl">
             Page not found
           </p>
@@ -67,7 +67,7 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
           </p>
           <Link
             href="/blog"
-            className="text-brand duration-150 hover:opacity-80 font-medium inline-flex items-center gap-x-1"
+            className=" duration-150 hover:opacity-80 font-medium inline-flex items-center gap-x-1"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to blog
@@ -77,37 +77,24 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
     </main>
   );
 
-  // Calculate reading time if not provided
-  const readingTime = post.readingTime || Math.ceil(post.html?.length / 1000) || 5;
+  //  reading time 
+  const readingTime = post.readingTime ;
   const articleUrl = `https://lightweight.so/blog/${slug}`;
 
   return (
-    <main className="bg-landing-background min-h-screen text-gray-100">
+    <main className="min-h-screen text-gray-800">
       {/* Header with back button and tags */}
       <div className="max-w-6xl mx-auto px-4 pt-8">
         <div className="flex items-center justify-between max-w-4xl">
           <Link 
             href="/blog" 
-            className="flex pb-4 items-center gap-2 text-gray-400 hover:text-gray-300 transition-colors"
+            className="flex pb-4 items-center gap-2 hover:text-gray-300 transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>Back</span>
           </Link>
           
-          {/* Tags */}
-          {post.tags && post.tags.length > 0 && (
-            <div className="flex gap-2">
-              {post.tags.slice(0, 3).map((tag: any) => (
-                <Link
-                  key={tag.slug}
-                  href={`/blog/tag/${tag.slug}`}
-                  className="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-sm hover:bg-gray-700 transition-colors"
-                >
-                  {tag.title}
-                </Link>
-              ))}
-            </div>
-          )}
+         
         </div>
         <header className="mb-8">
             <h1 className="text-3xl md:text-4xl lg:text-4xl mb-6 leading-tight">
@@ -155,9 +142,9 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
                     )}
                   </div>
                   <div className="text-left">
-                    <p className="font-medium text-gray-200">{post.author.name}</p>
+                    <p className="font-medium text-gray-700">{post.author.name}</p>
                     {post.author.title && (
-                      <p className="text-sm text-gray-500">{post.author.title}</p>
+                      <p className="text-sm text-gray-600">{post.author.title}</p>
                     )}
                   </div>
                 </div>
@@ -241,28 +228,29 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
               {/* On this page navigation */}
               {post.navigationMenu && post.navigationMenu.length > 0 && (
                 <div>
-                  <h3 className="text-lg font-semibold mb-4 text-gray-200">On this page</h3>
-                  <nav className="space-y-2">
-                    {post.navigationMenu.map((item: any, index: number) => (
-                      <a
-                        key={index}
-                        href={`#${item.id}`}
-                        className={`block py-2 text-sm hover:text-brand transition-colors ${
-                          item.level === 1 ? 'text-gray-300 font-medium' :
-                          item.level === 2 ? 'text-gray-400 pl-4' :
-                          'text-gray-500 pl-8'
-                        }`}
-                      >
-                        {item.text}
-                      </a>
-                    ))}
+                  <h3 className="text-lg font-semibold mb-4 text-gray-600">On this page</h3>
+                  <nav className="">
+                    {post.navigationMenu
+                      .filter((item: any) => item.level <= 2)
+                      .map((item: any, index: number) => (
+                        <a
+                          key={index}
+                          href={`#${item.id}`}
+                          style={{ cursor: 'pointer' }}
+                          className={`block py-1.5 text-sm text-gray-600 hover:text-gray-800 transition-colors ${
+                            item.level === 1 ? 'font-medium' : 'pl-4'
+                          }`}
+                        >
+                          {item.text}
+                        </a>
+                      ))}
                   </nav>
                 </div>
               )}
 
               {/* Share section */}
               <div className="pt-8 border-t border-gray-800">
-                <h3 className="text-lg font-semibold mb-4 text-gray-200">Share this article</h3>
+                <h3 className="text-lg font-semibold mb-4 text-gray-500">Share this article</h3>
                 <Suspense fallback={
                   <div className="flex items-center gap-3">
                     <div className="w-5 h-5 rounded bg-gray-800 animate-pulse" />
