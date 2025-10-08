@@ -31,8 +31,8 @@
 }
 
 .article a {
-  color: #2e4b68;
-  text-decoration: none;
+  color: #5CB87A;
+  text-decoration: underline;
 }
 
 .article ol,
